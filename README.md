@@ -1,6 +1,9 @@
  Constrained RAndom Verification Enviroment - CRAVE
 ====================================================
 
+[![Build Status](https://travis-ci.org/hoangmle/crave-bundle-2015-07-22.svg?branch=master)](https://travis-ci.org/hoangmle/crave-bundle-2015-07-22)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/6907/badge.svg)](https://scan.coverity.com/projects/hoangmle-crave-bundle-2015-07-22)
+
 For feedback and bug reports: crave@informatik.uni-bremen.de
 
  Preparations

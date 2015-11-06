@@ -1,0 +1,20 @@
+add_tool_executable( metaSMT-server
+  SOURCES
+    main.cpp
+    SolverProcess.cpp
+    Connection.cpp
+  REQUIRES
+    Boost_FOUND
+    Boolector_FOUND
+    CUDD_FOUND
+    MiniSat_FOUND
+    PicoSAT_FOUND
+    STP_FOUND
+    SWORD_FOUND
+    Z3_FOUND
+    STP_FOUND
+  LIBRARIES
+    pthread
+    ${Boost_SYSTEM_LIBRARY}
+    ${Boost_THREAD_LIBRARY}
+)

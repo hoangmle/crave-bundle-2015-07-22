@@ -1,4 +1,4 @@
-SRCDIR:=$(shell pwd)
+SRCDIR:=.
 BUILD:=$(SRCDIR)/build
 
 ifndef MAKECMDGOALS

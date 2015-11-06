@@ -5,6 +5,10 @@ sudo: false
 compiler:
   - gcc
 
+env:
+  global:
+   - secure: "GpJSApht+7AsuCywa7pQzXhnEZ/Gpso4m8jfGbgvt+BO3gYeq7zFxHb5xajL4Ii2dQXGBPMbURr6R1Io/0PTQUtKBxufYsW3isblcGBGGrDTUu1bMa5Euq9vvbV/rlayHPyLXwYqgDWzZJiOCXQF5uWDaMvIOFPSRkjXAJPXnyozZMhOWNY+bmsjlwvd8F6E7EPf2OuhViYB8Y3vDRatjs/eWESK92LKQB0Q2lR2mid/yYsdFVQv+o6vryYispsvEq5Kbd9qSgygcHsgOdXnFlmyOzDkXhqGzEOxYfDWsvnnEBlWOM1Oh28pNTN8+eY4B6cz0hCHk7mLgtcTy8rQcpKM4dXl+VflQ2CC1rPUvwXcFasoV6YDLfMZV4EE7cehCxqq5CjqhCae6wNwYL4e2I37XsVtzj+PkRDFTTi89AIB8rxbOIPLHnaUynBoUW7GWKj8lVJAdrYT66GQU1sYCKBb+br4wUM8vwC/QPmsbszJT3mJaJSu7xAnltANAQQUIlDaw1ifDZ+J1ScrK9c4R4+caGtMiNPEQN95sJHfJ6VfQbgfwhzzD1ko9BRwl5nrBeQYNDe5Z4Mr41JI9i6N7ycMp/pI0oLE4l5gTn5iCIhcdoRgEzNIogXAIMqo64u6FJOMCBuJTHuh+S/IyljTcfF0jjDbWUydz5pSM2RObBs="
+
 addons:
   apt:
     sources:
@@ -12,6 +16,14 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - cmake
+  coverity_scan:
+    project:
+      name: "hoangmle/crave-bundle-2015-07-22"
+      description: "Build submitted via Travis CI"
+    notification_email: hle@informatik.uni-bremen.de
+    build_command_prepend: ""
+    build_command:   "make"
+    branch_pattern: coverity_scan
 
 cache:
   directories:

@@ -1,0 +1,26 @@
+language: cpp
+
+sudo: false
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+    - kalakris-cmake
+    - ubuntu-toolchain-r-test
+    packages:
+    - cmake
+
+cache:
+  directories:
+  - deps
+
+script: make
+
+after_success:
+  - make test
+
+os:
+  - linux

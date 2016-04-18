@@ -30,12 +30,15 @@ addons:
 cache:
   apt: true
   directories:
-  - deps
+  - deps-gcc
+  - deps-clang
 
 script:
-  - export BOOST_ROOT=/usr
-  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then ./bootstrap -d deps -b cudd -b boolector build; fi
-  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
+  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG=-d deps-clang build -b cudd -b sword; fi
+  - if [[ "${CXX}" == "g++"     ]]; then export CONFIG=-d deps-gcc build -b cudd -b boolector; fi
+  - if [ "${COVERITY_SCAN_BRANCH}" == 1 ]; then export CONFIG="skip"; fi
+  - if [[ "${CONFIG}" != "skip" ]]; then ./bootstrap.sh ${CONFIG}; fi
+  - if [[ "${CONFIG}" != "skip" ]]; then make; fi
 
 after_success:
   - make test

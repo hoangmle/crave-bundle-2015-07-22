@@ -15,8 +15,10 @@ addons:
     sources:
     - kalakris-cmake
     - ubuntu-toolchain-r-test
+    - boost-latest
     packages:
     - cmake
+    - libboost-all-dev
   coverity_scan:
     project:
       name: "hoangmle/crave-bundle-2015-07-22"
@@ -29,7 +31,9 @@ cache:
   directories:
   - deps
 
-script: if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
+script:
+  - export BOOST_ROOT=/usr
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
 
 after_success:
   - make test

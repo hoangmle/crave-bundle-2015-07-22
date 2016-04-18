@@ -1,7 +1,7 @@
 project ( crave-bundle )
 cmake_minimum_required(VERSION 2.8)
 
-option(CRAVE_ENABLE_EXPERIMENTAL "enable experimental extensions of CRAVE" off)
+option(CRAVE_ENABLE_EXPERIMENTAL "enable experimental extensions of CRAVE" on)
 
 if (CRAVE_ENABLE_EXPERIMENTAL)
   add_definitions(-std=c++11)

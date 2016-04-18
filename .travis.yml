@@ -18,7 +18,7 @@ addons:
     - boost-latest
     packages:
     - cmake
-    - libboost-all-dev
+    - libboost1.55-all-dev
   coverity_scan:
     project:
       name: "hoangmle/crave-bundle-2015-07-22"
@@ -28,11 +28,13 @@ addons:
     branch_pattern: coverity_scan
 
 cache:
+  apt: true
   directories:
   - deps
 
 script:
   - export BOOST_ROOT=/usr
+  - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then ./bootstrap -d deps -b cudd -b boolector build; fi
   - if [ "${COVERITY_SCAN_BRANCH}" != 1 ]; then make ; fi
 
 after_success:

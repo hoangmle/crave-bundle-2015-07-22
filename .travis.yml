@@ -24,8 +24,8 @@ addons:
     - libboost-python1.55-dev
     - libboost-thread1.55-dev
     - libboost-filesystem1.55-dev
-    - gcc-5
-    - g++-5
+    - gcc-4.8
+    - g++-4.8
   coverity_scan:
     project:
       name: "hoangmle/crave-bundle-2015-07-22"
@@ -41,8 +41,8 @@ cache:
   - deps-clang
 
 script:
-  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b z3" CXXFLAGS="-stdlib=libc++"; fi
-  - if [[ "${CXX}" == "g++"     ]]; then export CONFIG="-d deps-gcc build -b cudd -b boolector" CXX="g++-5" CC="gcc-5"; fi
+  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b z3"; fi
+  - if [[ "${CXX}" == "g++"     ]]; then export CONFIG="-d deps-gcc build -b cudd -b boolector" CXX="g++-4.8" CC="gcc-4.8"; fi
   - if [ "${COVERITY_SCAN_BRANCH}" == 1 ]; then export CONFIG="skip"; fi
   - if [[ "${CONFIG}" != "skip" ]]; then export BOOST_ROOT=/usr; fi
   - if [[ "${CONFIG}" != "skip" ]]; then ./bootstrap.sh ${CONFIG}; fi

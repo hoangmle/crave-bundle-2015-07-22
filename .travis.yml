@@ -41,12 +41,12 @@ cache:
   - deps-clang
 
 script:
-  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b z3"; fi
+  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b boolector"; fi
   - if [[ "${CXX}" == "g++"     ]]; then export CONFIG="-d deps-gcc build -b cudd -b boolector" CXX="g++-4.8" CC="gcc-4.8"; fi
   - if [ "${COVERITY_SCAN_BRANCH}" == 1 ]; then export CONFIG="skip"; fi
   - if [[ "${CONFIG}" != "skip" ]]; then export BOOST_ROOT=/usr; fi
-  - if [[ "${CONFIG}" != "skip" ]]; then ./bootstrap.sh ${CONFIG} -j2; fi
-  - if [[ "${CONFIG}" != "skip" ]]; then make -j2; fi
+  - if [[ "${CONFIG}" != "skip" ]]; then ./bootstrap.sh ${CONFIG} -j 2; fi
+  - if [[ "${CONFIG}" != "skip" ]]; then make -j 2; fi
 
 after_success:
   - make test

@@ -33,6 +33,7 @@ addons:
       name: "hoangmle/crave-bundle-2015-07-22"
       description: "Build submitted via Travis CI"
     notification_email: hle@informatik.uni-bremen.de
+    build_command_prepend: "CXX=g++-4.8 CC=gcc-4.8 BOOST_ROOT=/usr ./bootstrap.sh -d deps-gcc build -b cudd -b boolector -j 2"
     build_command: "make"
     branch_pattern: coverity_scan
 

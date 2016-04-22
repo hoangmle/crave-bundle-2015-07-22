@@ -43,7 +43,7 @@ cache:
   - deps-clang
 
 script:
-  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b boolector"; CXX="clang++-3.5" CC="clang-3.5"; fi
+  - if [[ "${CXX}" == "clang++" ]]; then export CONFIG="-d deps-clang build -b cudd -b z3"; CXX="clang++-3.5" CC="clang-3.5"; fi
   - if [[ "${CXX}" == "g++"     ]]; then export CONFIG="-d deps-gcc build -b cudd -b boolector" CXX="g++-4.8" CC="gcc-4.8"; fi
   - if [ "${COVERITY_SCAN_BRANCH}" == 1 ]; then export CONFIG="skip"; fi
   - if [[ "${CONFIG}" != "skip" ]]; then export BOOST_ROOT=/usr; fi

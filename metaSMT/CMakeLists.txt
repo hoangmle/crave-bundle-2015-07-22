@@ -171,9 +171,10 @@ if(Z3_FOUND)
     set(Z3_LIBRARIES ${Z3_LIBRARIES} gomp)
   endif()
 
+  find_library(RT_LIB rt)
   find_package(Threads QUIET)
 
-  set(Z3_LIBRARIES ${Z3_LIBRARIES} rt ${CMAKE_THREAD_LIBS_INIT})
+  set(Z3_LIBRARIES ${Z3_LIBRARIES} ${RT_LIB} ${CMAKE_THREAD_LIBS_INIT})
 
   include(CheckCXXSourceRuns)
 
